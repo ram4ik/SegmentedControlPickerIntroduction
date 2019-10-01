@@ -9,8 +9,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var dayNight = "day"
+    @State private var tab = 1
+    
     var body: some View {
-        Text("Hello World")
+        VStack(spacing: 20) {
+            Text("Segmented control").font(.largeTitle)
+            Text("Introdution").font(.title).foregroundColor(.gray)
+            Text("Additional text")
+            Picker("", selection: $dayNight) {
+                Text("Day").tag("day")
+                Text("Night").tag("night")
+            }.pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            Text("With images:")
+            Picker("", selection: $tab) {
+                Image(systemName: "sun.min").tag(0)
+                Image(systemName: "moon").tag(1)
+            }.pickerStyle(SegmentedPickerStyle())
+            .padding()
+        }
     }
 }
 
